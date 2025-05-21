@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity() {
         }
         tvTipDescription.text = tipDescription
 
-        // Update color based on tip %
         val color = ArgbEvaluator().evaluate(
             tipPercent.toFloat()/seekBarTip.max,
             ContextCompat.getColor(this, R.color.color_worst_tip),
@@ -91,13 +90,12 @@ class MainActivity : AppCompatActivity() {
             tvTotalAmount.text = ""
             return
         }
-    // 1. Get Value
+
         val baseAmount = etBaseAmount.text.toString().toDouble()
         val tipPercent = seekBarTip.progress
-    // 2. Compute
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
-    // 3. Update UI
+
         tvTipAmount.text = "%.2f".format(tipAmount)
         tvTotalAmount.text = "%.2f".format(totalAmount)
 
